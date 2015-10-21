@@ -1,6 +1,9 @@
+typeof null
+
 notifyMe = function() {
 	this.delayTime = 0;
 	this.appearTime = 10000;
+	this.iconUrl = "drawable/Logo256.png";
 	this.onClick;
 
 	this.sendNotification = function (displayString) {
@@ -10,8 +13,16 @@ notifyMe = function() {
 		
 		// Let's check whether notification permissions have already been granted
 		else if (Notification.permission === "granted") {
-		// If it's okay let's create a notification
-			var notification = new Notification(displayString);
+			// If it's okay let's create a notification
+			var notification;
+			if (this.iconUrl == null) {
+				notification = new Notification(displayString);
+			} else {
+				var options = {
+						icon: this.iconUrl
+				}
+				notification = new Notification(displayString, options);
+			}
 			notification.onclick = this.onClick;
 			setTimeout(notification.close.bind(notification), this.appearTime);
 		}
@@ -21,7 +32,15 @@ notifyMe = function() {
 			Notification.requestPermission(function (permission) {
 				// If the user accepts, let's create a notification
 				if (permission === "granted") {
-					var notification = new Notification(displayString);
+					var notification;
+					if (this.iconUrl == null) {
+						notification = new Notification(displayString);
+					} else {
+						var options = {
+								icon: this.iconUrl
+						}
+						notification = new Notification(displayString, options);
+					}
 					notification.onclick = this.onClick;
 					setTimeout(notification.close.bind(notification), this.appearTime);
 				}
@@ -31,6 +50,10 @@ notifyMe = function() {
 
 	this.setAppearTime = function (appearTime) {
 		this.appearTime = appearTime;
+	}
+
+	this.setIconUrl = function (iconUrl) {
+			this.iconUrl = iconUrl;
 	}
 
 	this.setOnClick = function (onClickCallBack) {
