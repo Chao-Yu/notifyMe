@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Example page for Notification</title>
+    <script type="text/javascript" src="notifyMe.js"></script>
+  </head>
+  <body>
+
+    <input type="button" value="notifyMe" onclick="putNotify()" />
+
+	<script>
+		
+		function showText() {
+				alert("clicked");
+		}
+
+		function putNotify() {
+			var notifyMeObject = new notifyMe();
+			notifyMeObject.setOnClick(showText);
+			notifyMeObject.sendNotification("display default");
+
+			notifyMeObject.setAppearTime(1000);
+			notifyMeObject.sendNotification("display 1s");
+		}
+	</script>
+  </body>
+</html>
