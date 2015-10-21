@@ -5,13 +5,15 @@ notifyMe is a library used to create web Notification Object With default settin
 Before send a notification, you can change appear time and click event handler through setter function.
 
 ### Create Object
+
 var notifyMeObject = new notifyMe();
 
 ### Setter function
-// set onclick callback function
+
+<p>set onclick callback function</p>
 notifyMeObject.setOnClick(function callback(parameters...){});
 
-// set appear time to 1000 millisecond
+<p>set appear time to 1000 millisecond</p>
 notifyMeObject.setAppearTime(1000);
 
 ### Send a Notification
