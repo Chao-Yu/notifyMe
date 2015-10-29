@@ -16,8 +16,13 @@ notifyMeObject.setOnClick(function callback(parameters...){});
 <p>set appear time to 1000 millisecond</p>
 notifyMeObject.setAppearTime(1000);
 
+<<<<<<< HEAD
 ### Request a Notification
 notifyMeObject.requestPermission();
+=======
+<p>set icon url</p>
+notifyMeObject.setIconUrl("your url link");
+>>>>>>> cfe54c16b84afd6dcfdeac06dcb5c5a71466b945
 
 ### Send a Notification
 notifyMeObject.sendNotification("display a string");
