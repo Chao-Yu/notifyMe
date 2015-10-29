@@ -6,9 +6,34 @@ notifyMe = function() {
 	this.iconUrl = "drawable/Logo256.png";
 	this.onClick;
 
-	this.sendNotification = function (displayString) {
+	this.requestPermission = function () {
 		if (!("Notification" in window)) {
 			alert("This browser does not support desktop notification");
+		}
+		// Otherwise, we need to ask the user for permission
+		else if (Notification.permission !== 'denied') {
+			Notification.requestPermission(function (permission) {
+				// If the user accepts, let's create a notification
+				if (permission === "granted") {
+					var notification;
+					if (this.iconUrl == null) {
+						notification = new Notification(displayString);
+					} else {
+						var options = {
+								icon: this.iconUrl
+						}
+						notification = new Notification(displayString, options);
+					}
+					notification.onclick = this.onClick;
+					setTimeout(notification.close.bind(notification), this.appearTime);
+				}
+			});
+		}
+	}
+
+	this.sendNotification = function (displayString) {
+		if (!("Notification" in window)) {
+			// alert("This browser does not support desktop notification");
 		}
 		
 		// Let's check whether notification permissions have already been granted

@@ -16,5 +16,8 @@ notifyMeObject.setOnClick(function callback(parameters...){});
 <p>set appear time to 1000 millisecond</p>
 notifyMeObject.setAppearTime(1000);
 
+### Request a Notification
+notifyMeObject.requestPermission();
+
 ### Send a Notification
 notifyMeObject.sendNotification("display a string");
