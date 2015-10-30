@@ -15,17 +15,7 @@ notifyMe = function() {
 			Notification.requestPermission(function (permission) {
 				// If the user accepts, let's create a notification
 				if (permission === "granted") {
-					var notification;
-					if (this.iconUrl == null) {
-						notification = new Notification(displayString);
-					} else {
-						var options = {
-								icon: this.iconUrl
-						}
-						notification = new Notification(displayString, options);
-					}
-					notification.onclick = this.onClick;
-					setTimeout(notification.close.bind(notification), this.appearTime);
+					return;
 				}
 			});
 		}
